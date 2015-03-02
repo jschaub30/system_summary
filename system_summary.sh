@@ -31,7 +31,8 @@ echo $P + 1 | bc >> $FN
 echo "</a></td></tr>" >> $FN
 
 P=$(grep "model name" html/cpuinfo | tail -n 1 | cut -d':' -f2)  # for x86 systems
-[[ $P -lt 2 ]] && P=$(grep "cpu" html/cpuinfo | tail -n 1 | cut -d':' -f2)  # Power
+NP=$(grep "model name" html/cpuinfo | wc -l)
+[[ $NP -lt 1 ]] && P=$(grep "cpu" html/cpuinfo | tail -n 1 | cut -d':' -f2)  # Power
 echo "<tr><td>CPU type</td><td>" >> $FN
 echo "<a href=\"cpuinfo\">" >> $FN
 echo $P >> $FN
