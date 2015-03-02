@@ -28,13 +28,6 @@ echo "</a></td>" >> $FN
 echo "</tr>" >> $FN
 
 echo "<tr>" >> $FN
-echo "<td>Total memory</td>" >> $FN
-echo "<td><a href=\"$DIR/meminfo\">" >> $FN
-head -n 1 $DIR/meminfo | cut -d':' -f2 >>$FN
-echo "</a></td>" >> $FN
-echo "</tr>" >> $FN
-
-echo "<tr>" >> $FN
 echo "<td>CPUs</td>" >> $FN
 echo "<td><a href=\"$DIR/cpuinfo\">" >> $FN
 P=$(grep "processor" $DIR/cpuinfo | tail -n 1 | cut -d':' -f2)
@@ -53,15 +46,16 @@ echo "</a></td>" >> $FN
 echo "</tr>" >> $FN
 
 echo "<tr>" >> $FN
-echo "<tr><td colspan=\"2\">" >> $FN
-echo "<a href=\"$DIR/diskinfo\">Disk info" >> $FN
+echo "<td>Total memory</td>" >> $FN
+echo "<td><a href=\"$DIR/meminfo\">" >> $FN
+head -n 1 $DIR/meminfo | cut -d':' -f2 >>$FN
 echo "</a></td>" >> $FN
 echo "</tr>" >> $FN
 
 echo "<tr>" >> $FN
 echo "<td>Linux version</td>" >> $FN
 echo "<td><a href=\"$DIR/version\">" >> $FN
-uname -v >> $FN
+uname -r >> $FN
 echo "</a></td>" >> $FN
 echo "</tr>" >> $FN
 
@@ -69,6 +63,12 @@ echo "<tr>" >> $FN
 echo "<td>Operating system</td>" >> $FN
 echo "<td><a href=\"$DIR/os\">" >> $FN
 cat $DIR/os | grep "Description" | cut -d":" -f 2 >> $FN
+echo "</a></td>" >> $FN
+echo "</tr>" >> $FN
+
+echo "<tr>" >> $FN
+echo "<tr><td colspan=\"2\">" >> $FN
+echo "<a href=\"$DIR/diskinfo\">Disk info" >> $FN
 echo "</a></td>" >> $FN
 echo "</tr>" >> $FN
 
