@@ -3,7 +3,7 @@
 HOSTNAME=$(hostname -s)
 DIR=$HOSTNAME
 mkdir -p $DIR
-lstopo $DIR/$HOSTNAME.png
+lstopo --of png $DIR/$HOSTNAME.png
 cat /proc/cpuinfo > $DIR/cpuinfo
 cat /proc/meminfo > $DIR/meminfo
 cat /proc/version > $DIR/version
