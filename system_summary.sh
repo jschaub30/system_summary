@@ -82,7 +82,7 @@ echo "</tr>" >> $FN
 
 echo "<tr>" >> $FN
 echo "<tr><td colspan=\"2\">" >> $FN
-echo "<a href=\"$DIR/diskinfo\">Disk info" >> $FN
+echo "<a href=\"$DIR/diskinfo\">Disk usage" >> $FN
 echo "</a></td>" >> $FN
 echo "</tr>" >> $FN
 
