@@ -8,8 +8,10 @@ cat /proc/cpuinfo > $DIR/cpuinfo
 cat /proc/meminfo > $DIR/meminfo
 cat /proc/version > $DIR/version
 lsb_release -a > $DIR/os
+lsblk > $DIR/lsblk
 df -h > $DIR/diskinfo
 ifconfig > $DIR/ifconfig
+lspci > $DIR/lspci
 
 FN=$HOSTNAME.html
 echo Writing html to $FN and subdirectory $DIR
@@ -68,6 +70,18 @@ echo "</tr>" >> $FN
 
 echo "<tr>" >> $FN
 echo "<tr><td colspan=\"2\">" >> $FN
+echo "<a href=\"$DIR/lspci\">lspci" >> $FN
+echo "</a></td>" >> $FN
+echo "</tr>" >> $FN
+
+echo "<tr>" >> $FN
+echo "<tr><td colspan=\"2\">" >> $FN
+echo "<a href=\"$DIR/lsblk\">lsblk" >> $FN
+echo "</a></td>" >> $FN
+echo "</tr>" >> $FN
+
+echo "<tr>" >> $FN
+echo "<tr><td colspan=\"2\">" >> $FN
 echo "<a href=\"$DIR/diskinfo\">Disk info" >> $FN
 echo "</a></td>" >> $FN
 echo "</tr>" >> $FN
@@ -81,4 +95,4 @@ echo "</tr>" >> $FN
 
 echo "</table>" >> $FN
 
-
+echo "<br>This page automatically generated using <a href="https://github.com/jschaub30/system_summary">this</a> script." >> $FN
