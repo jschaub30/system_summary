@@ -8,9 +8,11 @@ cat /proc/cpuinfo > $DIR/cpuinfo
 cat /proc/meminfo > $DIR/meminfo
 cat /proc/version > $DIR/version
 lsb_release -a > $DIR/os
+[ $? -ne 0 ] && cat /etc/redhat-release > $DIR/os
 lsblk > $DIR/lsblk
 df -h > $DIR/diskinfo
 ifconfig > $DIR/ifconfig
+[ $? -ne 0 ] && ip link > $DIR/ifconfig
 lspci > $DIR/lspci
 
 FN=$HOSTNAME.html
