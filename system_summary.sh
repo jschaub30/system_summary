@@ -5,6 +5,7 @@ DIR=$HOSTNAME
 mkdir -p $DIR
 lstopo --of png $DIR/$HOSTNAME.png
 cat /proc/cpuinfo > $DIR/cpuinfo
+lscpu > $DIR/lscpu
 cat /proc/meminfo > $DIR/meminfo
 cat /proc/version > $DIR/version
 lsb_release -a > $DIR/os
@@ -36,6 +37,12 @@ echo "<td>CPUs</td>" >> $FN
 echo "<td><a href=\"$DIR/cpuinfo\">" >> $FN
 P=$(grep "processor" $DIR/cpuinfo | tail -n 1 | cut -d':' -f2)
 echo $P + 1 | bc >> $FN
+echo "</a></td>" >> $FN
+echo "</tr>" >> $FN
+
+echo "<tr>" >> $FN
+echo "<tr><td colspan=\"2\">" >> $FN
+echo "<a href=\"$DIR/lscpu\">lscpu" >> $FN
 echo "</a></td>" >> $FN
 echo "</tr>" >> $FN
 
